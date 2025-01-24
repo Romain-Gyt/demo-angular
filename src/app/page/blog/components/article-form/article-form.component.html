@@ -1,0 +1,36 @@
+<form [formGroup]="articleForm" (ngSubmit)="addArticle()" class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+  <div class="mb-4">
+    <label for="title" class="block text-lg font-semibold text-gray-700">Titre</label>
+    <input id="title" formControlName="title" type="text" class="w-full p-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    <div *ngIf="articleForm.get('title')?.invalid && articleForm.get('title')?.touched" class="mt-2 text-sm text-red-500">
+      <small>Le titre est requis et doit contenir au moins 3 caractères.</small>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="description" class="block text-lg font-semibold text-gray-700">Description</label>
+    <textarea id="description" formControlName="description" class="w-full p-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+    <div *ngIf="articleForm.get('description')?.invalid && articleForm.get('description')?.touched" class="mt-2 text-sm text-red-500">
+      <small>La description est requise et doit contenir au moins 10 caractères.</small>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="isPublic" class="inline-flex items-center text-lg font-semibold text-gray-700">
+      <input id="isPublic" formControlName="isPublic" type="checkbox" class="mr-2 rounded focus:outline-none" />
+      Publier?
+    </label>
+  </div>
+
+  <div class="mb-4">
+    <label for="author" class="block text-lg font-semibold text-gray-700">Auteur</label>
+    <input id="author" formControlName="author" type="text" class="w-full p-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    <div *ngIf="articleForm.get('author')?.invalid && articleForm.get('author')?.touched" class="mt-2 text-sm text-red-500">
+      <small>L'auteur est requis.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="articleForm.invalid" class="w-full mt-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:bg-gray-400">
+    Ajouter l'article
+  </button>
+</form>

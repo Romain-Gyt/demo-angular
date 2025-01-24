@@ -1,0 +1,29 @@
+<div class="flex flex-col items-center mt-5">
+  <h1 class="text-center font-bold text-2xl mb-5">Cat Facts</h1>
+
+  <p *ngIf="isLoading" class="text-center text-gray-500">Loading...</p>
+  <p *ngIf="!isLoading" class="text-center text-gray-500">Page: {{ isFromPage }}/ {{totalPages}}</p>
+
+  <ul class="bg-gray-100 p-4 rounded-md">
+    <li *ngFor="let item of facts" class="mt-2 mb-3 p-3 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 transition-all duration-300">
+      {{ item.fact }}
+    </li>
+  </ul>
+
+  <div class="flex justify-between w-full max-w-lg mt-4">
+    <button
+      type="button"
+      [disabled]="isFromPage == 1"
+      (click)="changePage(isFromPage - 1)"
+      class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+      Précédent
+    </button>
+    <button
+      type="button"
+      [disabled]="isFromPage == totalPages"
+      (click)="changePage(isFromPage + 1)"
+      class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+      Suivant
+    </button>
+  </div>
+</div>
