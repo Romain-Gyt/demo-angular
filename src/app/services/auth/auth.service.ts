@@ -32,7 +32,7 @@ export class AuthService {
     this.router.navigate(['/my-account']);
   }
 
-  updateState(user:User) {
+  updateState(user:User|null) {
     this.state.next({connectedUser:user})
   }
 
